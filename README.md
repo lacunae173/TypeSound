@@ -11,4 +11,4 @@ Make Nintendo Switch sound while typing.
 - Right click on tray icon to exit
 
 ### Compile note
-- Need to download SFML.Net package and manually copy dlls in extlibs folder into target folder
+- Need to download SFML.Net package and manually copy dlls in extlibs folder into target folder to compile with Visual Studio
