@@ -23,8 +23,11 @@ namespace TypeSound
 
         public Sound continueSound = new Sound();
 
-        public void SetVolume(float v)
+        public static int volume = 100;
+
+        public void SetVolume(int v)
         {
+            volume = v;
             foreach(Sound s in soundDict.Values)
             {
                 s.Volume = v;

@@ -21,7 +21,12 @@ namespace TypeSound
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             Program.sounds.SetVolume(trackBar1.Value);
-            volume = 100;
+            volume = trackBar1.Value;
+        }
+
+        public void SetVolume(int v)
+        {
+            trackBar1.Value = v;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace TypeSound
 {
     public partial class Form1 : Form
     {
-        Form volumeForm;
+        VolumeForm volumeForm;
 
         public Form1()
         {
@@ -18,6 +18,7 @@ namespace TypeSound
             if (volumeForm != null) 
                 volumeForm.Dispose();
             volumeForm = new VolumeForm();
+            volumeForm.SetVolume(Sounds.volume);
             volumeForm.Show();
         }
 
