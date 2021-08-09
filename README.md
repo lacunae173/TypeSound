@@ -10,5 +10,13 @@ Make Nintendo Switch sound while typing.
 - Double click on tray icon to adjust volume
 - Right click on tray icon to exit
 
+### Use note
+- The program might be identified as malware because it uses keyboard hook
+
 ### Compile note
-- Need to download SFML.Net package and manually copy dlls in extlibs folder into target folder to compile with Visual Studio
+To Build the project in Visual Studio
+- Open the TypeSound.sln in Visual Studio
+- Download SFML.Net package 
+- Copy dlls in the `extlibs` folder into target folder (`bin/Debug` or `bin/Release`)
+- Rename `csfml-xxxx-2.dll` to `csfml-xxxx.dll`
+- Build the project
