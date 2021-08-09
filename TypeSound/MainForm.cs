@@ -20,6 +20,7 @@ namespace TypeSound
             volumeForm = new VolumeForm();
             volumeForm.SetVolume(Sounds.volume);
             volumeForm.Show();
+            volumeForm.BringToFront();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
