@@ -12,7 +12,7 @@ namespace TypeSound
 
         private static bool ctrlDown = false;
         private static bool altDown = false;
-        private static bool f7Down = false;
+        private static bool deleteDown = false;
 
         private static bool continueSoundPlaying = false;
         private static Dictionary<Keys, Timer> keyTimers = new Dictionary<Keys, Timer>();
@@ -24,26 +24,26 @@ namespace TypeSound
             {
                 return;
             }
-            keyTimers[e].Tick += (sd, ev) => TimerEventProcessor(sender, ev, e);
-            keyTimers[e].Start();
-            
             if (e == Keys.LControlKey || e == Keys.RControlKey)
-            {
                 ctrlDown = true;
-            }
             if (e == Keys.LMenu || e == Keys.RMenu)
-            {
                 altDown = true;
-            }
-            if (e == Keys.F7)
+            if (e == Keys.Delete)
+                deleteDown = true;
+            if (ctrlDown && altDown && deleteDown)
             {
-                f7Down = true;
-            }
-
-            if (ctrlDown && altDown && f7Down)
+                kbh_OnKeyUnPressed(null, Keys.LControlKey);
+                kbh_OnKeyUnPressed(null, Keys.RControlKey);
+                kbh_OnKeyUnPressed(null, Keys.LMenu);
+                kbh_OnKeyUnPressed(null, Keys.RMenu);
+                kbh_OnKeyUnPressed(null, Keys.Delete);
+            } 
+            else
             {
-                Application.Exit();
+                keyTimers[e].Tick += (sd, ev) => TimerEventProcessor(sender, ev, e);
+                keyTimers[e].Start();
             }
+            
             if (ctrlDown && e == Keys.C)
             {
                 sounds.soundDict[Sounds.copyCode].Play();
@@ -81,20 +81,15 @@ namespace TypeSound
 
         private static void kbh_OnKeyUnPressed(object sender, Keys e)
         {
-            if (e == Keys.LControlKey || e == Keys.RControlKey)
-            {
-                ctrlDown = false;
-            }
-            if (e == Keys.LMenu || e == Keys.RMenu)
-            {
-                altDown = false;
-            }
-            if (e == Keys.F7)
-            {
-                f7Down = false;
-            }
             continueKeys.RemoveAll((k) => k == e);
             keyTimers[e].Stop();
+
+            if (e == Keys.LControlKey || e == Keys.RControlKey)
+                ctrlDown = false;
+            if (e == Keys.LMenu || e == Keys.RMenu)
+                altDown = false;
+            if (e == Keys.Delete)
+                deleteDown = false;
 
             if (continueSoundPlaying && continueKeys.Count == 0)
             {
