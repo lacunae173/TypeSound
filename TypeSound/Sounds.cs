@@ -32,6 +32,8 @@ namespace TypeSound
             {
                 s.Volume = v;
             }
+            normalTypeSound.Volume = v;
+            continueSound.Volume = v;
         }
 
         public Sounds()
