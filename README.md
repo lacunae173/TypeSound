@@ -15,8 +15,8 @@ Make Nintendo Switch sound while typing.
 
 ### Compile note
 To Build the project in Visual Studio
-- Open the TypeSound.sln in Visual Studio
-- Download SFML.Net package 
+- Open TypeSound.sln in Visual Studio
+- Download [SFML.Net](https://www.sfml-dev.org/download/sfml.net/)
 - Copy dlls in the `extlibs` folder into target folder (`bin/Debug` or `bin/Release`)
 - Rename `csfml-xxxx-2.dll` to `csfml-xxxx.dll`
 - Build the project
